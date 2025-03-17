@@ -1,7 +1,8 @@
 import { axiosClient } from '@/services';
+import { AppList } from '@/types/appStore';
 
-export const getApp = async () => {
-  const url = '/rss/topfreeapplications/limit=100/json';
+export const getApp = async (entries: number = 100): Promise<AppList> => {
+  const url = `/rss/topfreeapplications/limit=${entries}/json`;
   const res = await axiosClient.get(url);
-  return res.data;
+  return res.data.feed.entry;
 };
