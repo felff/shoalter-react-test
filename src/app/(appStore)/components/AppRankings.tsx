@@ -1,5 +1,3 @@
-'use client';
-
 import { AppList } from '@/types/appStore';
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -41,11 +39,15 @@ const itemsPerPage = 10;
 
 const AppRankings = (props: Props) => {
   const { appData } = props;
-  const [visibleItems, setVisibleItems] = useState<AppList>(
-    appData.slice(0, itemsPerPage),
-  );
+  const [visibleItems, setVisibleItems] = useState<AppList>([]);
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef(null);
+
+  useEffect(() => {
+    if (appData.length > 0) {
+      setVisibleItems(appData.slice(0, itemsPerPage));
+    } else setVisibleItems([]);
+  }, [appData]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -96,7 +98,7 @@ const AppRankings = (props: Props) => {
           const category = app.category.attributes.label;
           return (
             <AppCard
-              key={name}
+              key={i}
               index={i + 1}
               name={name}
               icon={url}
