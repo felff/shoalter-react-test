@@ -2,16 +2,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+- 語言使用 `Typescript` 撰寫
+- 使用 `React` 作為專案主要的函式庫
+- 使用 `Prettier` 作為 default formatter
+
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+執行 `pnpm install` (安裝專案所需要的套件)
+執行 `pnpm run dev` (執行專案)
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
